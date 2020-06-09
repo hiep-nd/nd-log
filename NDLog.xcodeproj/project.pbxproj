@@ -64,6 +64,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BA3E166E248F43BB00FA0E33 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				BA8C933C2429B83F00D1B0BF /* NDLog.h */,
+				BA8C93542429B8A800D1B0BF /* Log.h */,
+				BA8C93552429B8A800D1B0BF /* Log.mm */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		BA3E166F248F43C500FA0E33 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				BAA8AFB0242DA3BE0020486D /* Log.swift */,
+			);
+			path = Swift;
+			sourceTree = "<group>";
+		};
 		BA834F42242C9A2000A8F68E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,10 +114,8 @@
 		BA8C933B2429B83F00D1B0BF /* NDLog */ = {
 			isa = PBXGroup;
 			children = (
-				BA8C933C2429B83F00D1B0BF /* NDLog.h */,
-				BA8C93542429B8A800D1B0BF /* Log.h */,
-				BA8C93552429B8A800D1B0BF /* Log.mm */,
-				BAA8AFB0242DA3BE0020486D /* Log.swift */,
+				BA3E166E248F43BB00FA0E33 /* Core */,
+				BA3E166F248F43C500FA0E33 /* Swift */,
 				BA8C933D2429B83F00D1B0BF /* Info.plist */,
 			);
 			path = NDLog;

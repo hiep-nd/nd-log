@@ -17,13 +17,12 @@
 @implementation NDLogObjCTests
 
 - (void)test_Config {
-  XCTAssertTrue(
-      NDLogConfigureWithParas(@{kNDLogConfigLevel : @(NDLogLevelError)}));
+  XCTAssertTrue(NDLogConfigureWithParas(@{kNDLogLevel : @(NDLogLevelError)}));
 }
 
 - (void)test_Config_invalid {
 #ifdef DEBUG
-  XCTAssertThrows(NDLogConfigureWithParas(@{kNDLogConfigLevel : @"Error"}));
+  XCTAssertThrows(NDLogConfigureWithParas(@{kNDLogLevel : @"Error"}));
 #else
   XCTAssertFalse(NDLogConfigureWithParas(@{kNDLogConfigLevel : @"Error"}));
   XCTAssertEqual(NDLogLevelError, NDLogGetDefinedLevel());

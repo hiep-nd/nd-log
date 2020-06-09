@@ -11,14 +11,14 @@ import XCTest
 
 class NDLogSwiftTests: XCTestCase {
   func test_Config() throws {
-    XCTAssertTrue(nd_configure(paras: [.level: NDLogLevel.warning]))
+    XCTAssertTrue(nd_configureLog(paras: [.level: NDLogLevel.warning]))
     XCTAssertEqual(NDLogLevel.warning, definedLogLevel())
   }
 
   func test_Config_invalid() throws {
     if _isDebugAssertConfiguration() {
     } else {
-      XCTAssertFalse(nd_configure(paras: [.level: "Error"]))
+      XCTAssertFalse(nd_configureLog(paras: [.level: "Error"]))
       XCTAssertEqual(NDLogLevel.error, definedLogLevel())
     }
   }

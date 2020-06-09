@@ -10,16 +10,20 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/// Applies constraint as width by height in |constraintRatio| to view in
-/// |view|.
-FOUNDATION_EXPORT
-BOOL NDLogConfigureWithParas(NSDictionary<NSString*, id>* paras)
-    NS_REFINED_FOR_SWIFT;
-// Default is NDLogError
-extern NSString* const kNDLogConfigLevel;
+typedef NSString* NDLogParameterKey NS_TYPED_EXTENSIBLE_ENUM;
 
 FOUNDATION_EXPORT
-BOOL NDLogConfigureWithName(NSString* name) NS_REFINED_FOR_SWIFT;
+BOOL NDLogConfigureWithParas(NSDictionary<NDLogParameterKey, id>* paras)
+    NS_REFINED_FOR_SWIFT;
+
+/// Level
+/// Default value is NDLogError
+extern NDLogParameterKey const kNDLogLevel;
+
+FOUNDATION_EXPORT
+/// Config log with plist name.
+/// @param name The name, if nil the default value 'NDLog' will be used.
+BOOL NDLogConfigureWithName(NSString* _Nullable name) NS_REFINED_FOR_SWIFT;
 
 typedef NS_OPTIONS(NSUInteger, NDLogSeverity) {
   NDLogSeverityError = 1 << 0,

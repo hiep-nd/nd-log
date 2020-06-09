@@ -23,8 +23,8 @@ namespace {
 NDLogLevel NDLogDefinedLevel = NDLogLevelError;
 }
 
-BOOL NDLogConfigureWithParas(NSDictionary<NSString*, id>* paras) {
-  id level = paras[kNDLogConfigLevel];
+BOOL NDLogConfigureWithParas(NSDictionary<NDLogParameterKey, id>* paras) {
+  id level = paras[kNDLogLevel];
   if (level) {
     NDLogInternalCAssert([level isKindOfClass:NSNumber.class],
                          @"Invalid config level value: %@.", level);
@@ -38,10 +38,10 @@ BOOL NDLogConfigureWithParas(NSDictionary<NSString*, id>* paras) {
 
 BOOL NDLogConfigureWithName(NSString* name) {
   auto paras = [[NSDictionary alloc]
-      initWithContentsOfURL:[NSBundle.mainBundle URLForResource:name
+      initWithContentsOfURL:[NSBundle.mainBundle URLForResource:name ?: @"NDLog"
                                                   withExtension:@"plist"]];
+  NDLogInternalCAssert(paras, @"Error reading log config with name: %@.", name);
   if (!paras) {
-    NDLogInternalMessage(@"Error reading log config with name: %@.", name);
     return NO;
   }
 
@@ -52,7 +52,7 @@ NDLogLevel NDLogGetDefinedLevel() {
   return NDLogDefinedLevel;
 }
 
-NSString* const kNDLogConfigLevel = @"kNDLogConfigLevel";
+NSString* const kNDLogLevel = @"Level";
 
 void NDLogMessage(NSString* msg,
                   NDLogSeverity severity,

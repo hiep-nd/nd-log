@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "NDLog"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "A log system."
   s.description  = <<-DESC
   NDLog is a small and lightweight framework that help log.
@@ -13,8 +13,15 @@ Pod::Spec.new do |s|
   s.swift_versions = ['4.0', '5.1', '5.2']
   #s.source        = { :http => 'file:' + URI.escape(__dir__) + '/' }
   s.source       = { :git => "https://github.com/hiep-nd/nd-log.git", :tag => "Pod-#{s.version}" }
-  s.source_files  = "NDLog/**/*.{h,m,mm,swift}"
-  #s.private_header_files  = "NDLog/Bridging-Header.h>
-  #s.public_header_files  = "NDLog/**/*.h>
-  #s.header_mappings_dir = 'NDLog'
+  
+  s.default_subspecs = 'Core'
+  s.subspec 'Core' do |ss|
+    ss.source_files  = "NDLog/Core/**/*.{h,m,mm}"
+    ss.public_header_files = 'NDLog/Core/**/*.h'
+  end
+
+  s.subspec 'Swift' do |ss|
+    ss.dependency 'NDLog/Core'
+    ss.source_files = 'NDLog/Swift/**/*.{swift}'
+  end
 end

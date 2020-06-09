@@ -6,40 +6,24 @@
 //  Copyright © 2020 Nguyen Duc Hiep. All rights reserved.
 //
 
-public struct NDParameterKey: Hashable, Equatable, RawRepresentable {
-  public init(_ rawValue: String) {
-    self.init(rawValue: rawValue)
-  }
-
-  public init(rawValue: String) {
-    self.rawValue = rawValue
-  }
-
-  public let rawValue: String
-}
-
-extension NDParameterKey {
-  public static let level = NDParameterKey(kNDLogConfigLevel)
-}
-
 @discardableResult
-public func nd_configure(paras: [NDParameterKey: Any]) -> Bool {
+public func nd_configureLog(paras: [NDLogParameterKey: Any]) -> Bool {
   return __NDLogConfigureWithParas(
     paras.reduce(
       into: [:],
       {
         switch $1.key {
         case .level:
-          $0[$1.key.rawValue] = ($1.value is NDLogLevel)
+          $0[$1.key] = ($1.value is NDLogLevel)
             ? ($1.value as! NDLogLevel).rawValue : $1.value
         default:
-          $0[$1.key.rawValue] = $1.value
+          $0[$1.key] = $1.value
         }
       }))
 }
 
 @discardableResult
-public func nd_configure(name: String = "NDLog") -> Bool {
+public func nd_configureLog(name: String = "NDLog") -> Bool {
   return __NDLogConfigureWithName(name)
 }
 
