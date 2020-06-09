@@ -3,7 +3,7 @@
 //  NDLog
 //
 //  Created by Nguyen Duc Hiep on 3/24/20.
-//  Copyright © 2020 Neodata Co., Ltd. All rights reserved.
+//  Copyright © 2020 Nguyen Duc Hiep. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

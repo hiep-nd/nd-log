@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   #s.source        = { :http => 'file:' + URI.escape(__dir__) + '/' }
   s.source       = { :git => "https://github.com/hiep-nd/nd-log.git", :tag => "Pod-#{s.version}" }
   s.source_files  = "NDLog/**/*.{h,m,mm,swift}"
-  #s.private_header_files  = "NDLog/Bridging-Header.h"
-  #s.public_header_files  = "NDLog/**/*.h"
+  #s.private_header_files  = "NDLog/Bridging-Header.h>
+  #s.public_header_files  = "NDLog/**/*.h>
   #s.header_mappings_dir = 'NDLog'
 end

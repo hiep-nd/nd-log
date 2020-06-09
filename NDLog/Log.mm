@@ -3,10 +3,10 @@
 //  NDLog
 //
 //  Created by Nguyen Duc Hiep on 3/24/20.
-//  Copyright © 2020 Neodata Co., Ltd. All rights reserved.
+//  Copyright © 2020 Nguyen Duc Hiep. All rights reserved.
 //
 
-#import "NDLog/Log.h"
+#import <NDLog/Log.h>
 
 #define NDLogInternalMessage(...) NSLog(__VA_ARGS__)
 #define NDLogInternalCAssert(condition, format, ...)            \
@@ -61,9 +61,9 @@ void NDLogMessage(NSString* msg,
                   NSUInteger line,
                   id tag) {
   if (tag) {
-    NSLog(@"%s(%s:%lu): %@. %@", function, file, (unsigned long)line, msg, tag);
+    NSLog(@"%s(%s:%lu): %@ %@", function, file, (unsigned long)line, msg, tag);
   } else {
-    NSLog(@"%s(%s:%lu): %@.", function, file, (unsigned long)line, msg);
+    NSLog(@"%s(%s:%lu): %@", function, file, (unsigned long)line, msg);
   }
 }
 
