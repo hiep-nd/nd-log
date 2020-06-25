@@ -6,7 +6,7 @@
 //  Copyright © 2020 Nguyen Duc Hiep. All rights reserved.
 //
 
-#import <NDLog/Log.h>
+#import <NDLog/NDLog.h>
 
 #define NDLogInternalMessage(...) NSLog(__VA_ARGS__)
 #define NDLogInternalCAssert(condition, format, ...)            \
@@ -65,14 +65,4 @@ void NDLogMessage(NSString* msg,
   } else {
     NSLog(@"%s(%s:%lu): %@", function, file, (unsigned long)line, msg);
   }
-}
-
-void __NDLogMessage(NSString* msg,
-                    NDLogSeverity severity,
-                    NSString* file,
-                    NSString* function,
-                    NSUInteger line,
-                    id tag) {
-  NDLogMessage(msg, severity, [file cStringUsingEncoding:NSUTF8StringEncoding],
-               [function cStringUsingEncoding:NSUTF8StringEncoding], line, tag);
 }

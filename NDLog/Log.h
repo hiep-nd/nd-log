@@ -109,16 +109,6 @@ void NDLogMessage(NSString* msg,
                   const char* file,
                   const char* function,
                   NSUInteger line,
-                  id _Nullable tag)
-    NS_SWIFT_UNAVAILABLE(
-        "Use log(message:severity:file:function:line:tag) instead.");
-
-FOUNDATION_EXPORT
-void __NDLogMessage(NSString* msg,
-                    NDLogSeverity severity,
-                    NSString* file,
-                    NSString* function,
-                    NSUInteger line,
-                    id _Nullable tag);
+                  id _Nullable tag) NS_REFINED_FOR_SWIFT;
 
 NS_ASSUME_NONNULL_END

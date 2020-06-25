@@ -12,8 +12,6 @@
 		BA8C934A2429B83F00D1B0BF /* NDLog.h in Headers */ = {isa = PBXBuildFile; fileRef = BA8C933C2429B83F00D1B0BF /* NDLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA8C93562429B8A800D1B0BF /* Log.h in Headers */ = {isa = PBXBuildFile; fileRef = BA8C93542429B8A800D1B0BF /* Log.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA8C93572429B8A800D1B0BF /* Log.mm in Sources */ = {isa = PBXBuildFile; fileRef = BA8C93552429B8A800D1B0BF /* Log.mm */; };
-		BAA8AFB1242DA3BE0020486D /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA8AFB0242DA3BE0020486D /* Log.swift */; };
-		BAFD7FB8247F581700EC8CF3 /* NDLogSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFD7FB7247F581600EC8CF3 /* NDLogSwiftTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,14 +33,12 @@
 		BA8C93492429B83F00D1B0BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA8C93542429B8A800D1B0BF /* Log.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
 		BA8C93552429B8A800D1B0BF /* Log.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Log.mm; sourceTree = "<group>"; };
-		BAA8AFB0242DA3BE0020486D /* Log.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; tabWidth = 2; };
 		BAFD7FB1247E78E500EC8CF3 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		BAFD7FB2247E78E500EC8CF3 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		BAFD7FB3247E78E500EC8CF3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BAFD7FB4247E78E500EC8CF3 /* NDLog.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = NDLog.podspec; sourceTree = "<group>"; };
 		BAFD7FB5247E78E500EC8CF3 /* .swift-format */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".swift-format"; sourceTree = "<group>"; };
 		BAFD7FB6247F581500EC8CF3 /* NDLogTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NDLogTests-Bridging-Header.h"; sourceTree = "<group>"; };
-		BAFD7FB7247F581600EC8CF3 /* NDLogSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDLogSwiftTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,24 +60,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BA3E166E248F43BB00FA0E33 /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				BA8C933C2429B83F00D1B0BF /* NDLog.h */,
-				BA8C93542429B8A800D1B0BF /* Log.h */,
-				BA8C93552429B8A800D1B0BF /* Log.mm */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
-		BA3E166F248F43C500FA0E33 /* Swift */ = {
-			isa = PBXGroup;
-			children = (
-				BAA8AFB0242DA3BE0020486D /* Log.swift */,
-			);
-			path = Swift;
-			sourceTree = "<group>";
-		};
 		BA834F42242C9A2000A8F68E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,8 +92,9 @@
 		BA8C933B2429B83F00D1B0BF /* NDLog */ = {
 			isa = PBXGroup;
 			children = (
-				BA3E166E248F43BB00FA0E33 /* Core */,
-				BA3E166F248F43C500FA0E33 /* Swift */,
+				BA8C933C2429B83F00D1B0BF /* NDLog.h */,
+				BA8C93542429B8A800D1B0BF /* Log.h */,
+				BA8C93552429B8A800D1B0BF /* Log.mm */,
 				BA8C933D2429B83F00D1B0BF /* Info.plist */,
 			);
 			path = NDLog;
@@ -125,7 +104,6 @@
 			isa = PBXGroup;
 			children = (
 				BA8C93472429B83F00D1B0BF /* NDLogObjCTests.mm */,
-				BAFD7FB7247F581600EC8CF3 /* NDLogSwiftTests.swift */,
 				BA8C93492429B83F00D1B0BF /* Info.plist */,
 				BAFD7FB6247F581500EC8CF3 /* NDLogTests-Bridging-Header.h */,
 			);
@@ -255,7 +233,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BAA8AFB1242DA3BE0020486D /* Log.swift in Sources */,
 				BA8C93572429B8A800D1B0BF /* Log.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,7 +241,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BAFD7FB8247F581700EC8CF3 /* NDLogSwiftTests.swift in Sources */,
 				BA8C93482429B83F00D1B0BF /* NDLogObjCTests.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -453,7 +429,6 @@
 		BA8C93512429B83F00D1B0BF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6UKD7V9S9N;
@@ -475,7 +450,6 @@
 		BA8C93522429B83F00D1B0BF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6UKD7V9S9N;
