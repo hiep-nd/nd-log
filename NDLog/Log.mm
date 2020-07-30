@@ -54,8 +54,8 @@ NDLogLevel NDLogGetDefinedLevel() {
 
 NSString* const kNDLogLevel = @"Level";
 
-void NDLogMessage(NSString* msg,
-                  NDLogSeverity severity,
+void NDLogMessage(NDLogSeverity severity,
+                  NSString* msg,
                   const char* file,
                   const char* function,
                   NSUInteger line,

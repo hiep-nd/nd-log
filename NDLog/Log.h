@@ -46,11 +46,12 @@ typedef NS_ENUM(NSUInteger, NDLogLevel) {
 FOUNDATION_EXPORT
 NDLogLevel NDLogGetDefinedLevel(void) NS_SWIFT_NAME(definedLogLevel());
 
-#define NDLogIfAllowed(serverity, file, function, line, tag, format, ...) \
-  do {                                                                    \
-    if (NDLogGetDefinedLevel() & serverity)                               \
-      NDLogMessage([NSString stringWithFormat:format, ##__VA_ARGS__],     \
-                   serverity, file, function, line, tag);                 \
+#define NDLogIfAllowed(serverity, file, function, line, tag, format, ...)   \
+  do {                                                                      \
+    if (NDLogGetDefinedLevel() & serverity)                                 \
+      NDLogMessage(serverity,                                               \
+                   [NSString stringWithFormat:format, ##__VA_ARGS__], file, \
+                   function, line, tag);                                    \
   } while (0)
 
 #define NDLogTagError(tag, format, ...)                                       \
@@ -99,13 +100,13 @@ NDLogLevel NDLogGetDefinedLevel(void) NS_SWIFT_NAME(definedLogLevel());
 #define NDCAssert(condition, format, ...) \
   NDSystemAssert(NSCAssert, condition, format, ##__VA_ARGS__)
 
-#define NDAssertFailure(format, ...) NDAssert(NO, format, ##__VA_ARGS__)
+#define NDAssertionFailure(format, ...) NDAssert(NO, format, ##__VA_ARGS__)
 
-#define NDCAssertFailure(format, ...) NDCAssert(NO, format, ##__VA_ARGS__)
+#define NDCAssertionFailure(format, ...) NDCAssert(NO, format, ##__VA_ARGS__)
 
 FOUNDATION_EXPORT
-void NDLogMessage(NSString* msg,
-                  NDLogSeverity severity,
+void NDLogMessage(NDLogSeverity severity,
+                  NSString* msg,
                   const char* file,
                   const char* function,
                   NSUInteger line,
