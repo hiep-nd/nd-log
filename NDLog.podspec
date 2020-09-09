@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "NDLog"
-  s.version      = "0.0.4"
+  s.version      = "0.0.5"
   s.summary      = "A log system."
   s.description  = <<-DESC
   NDLog is a small and lightweight framework that help log.

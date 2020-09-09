@@ -8,15 +8,15 @@
 
 #import <NDLog/NDLog.h>
 
-#define NDLogInternalMessage(...) NSLog(__VA_ARGS__)
-#define NDLogInternalCAssert(condition, format, ...)            \
-  do {                                                          \
-    if (!(condition)) {                                         \
-      NDDefineAssertDescription(description, condition, format, \
-                                ##__VA_ARGS__);                 \
-      NDLogInternalMessage(@"%@", description);                 \
-      NSCAssert(NO, description);                               \
-    }                                                           \
+#define _NDLogInternalMessage(...) NSLog(__VA_ARGS__)
+#define _NDLogInternalCAssert(condition, format, ...)            \
+  do {                                                           \
+    if (!(condition)) {                                          \
+      _NDDefineAssertDescription(description, condition, format, \
+                                 ##__VA_ARGS__);                 \
+      _NDLogInternalMessage(@"%@", description);                 \
+      NSCAssert(NO, description);                                \
+    }                                                            \
   } while (0)
 
 namespace {
@@ -24,23 +24,27 @@ NDLogLevel NDLogDefinedLevel = NDLogLevelError;
 }
 
 BOOL NDLogConfigureWithParas(NSDictionary<NDLogParameterKey, id>* paras) {
+  BOOL success = YES;
   id level = paras[kNDLogLevel];
   if (level) {
-    NDLogInternalCAssert([level isKindOfClass:NSNumber.class],
-                         @"Invalid config level value: %@.", level);
-    if ([level isKindOfClass:NSNumber.class]) {
+    if (![level isKindOfClass:NSNumber.class]) {
+      _NDLogInternalCAssert([level isKindOfClass:NSNumber.class],
+                            @"Invalid config level value: %@.", level);
+      success = NO;
+    } else {
       NDLogDefinedLevel = (NDLogLevel)[level unsignedIntegerValue];
     }
   }
 
-  return YES;
+  return success;
 }
 
 BOOL NDLogConfigureWithName(NSString* name) {
   auto paras = [[NSDictionary alloc]
       initWithContentsOfURL:[NSBundle.mainBundle URLForResource:name ?: @"NDLog"
                                                   withExtension:@"plist"]];
-  NDLogInternalCAssert(paras, @"Error reading log config with name: %@.", name);
+  _NDLogInternalCAssert(paras, @"Error reading log config with name: %@.",
+                        name);
   if (!paras) {
     return NO;
   }

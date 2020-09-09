@@ -24,7 +24,7 @@
 #ifdef DEBUG
   XCTAssertThrows(NDLogConfigureWithParas(@{kNDLogLevel : @"Error"}));
 #else
-  XCTAssertFalse(NDLogConfigureWithParas(@{kNDLogConfigLevel : @"Error"}));
+  XCTAssertFalse(NDLogConfigureWithParas(@{kNDLogLevel : @"Error"}));
   XCTAssertEqual(NDLogLevelError, NDLogGetDefinedLevel());
 #endif
 }
@@ -104,10 +104,14 @@
                 @"para 0", @"para 1");
 }
 
-- (void)test_dassert {
+- (void)test_DAssert {
   NDDAssert(false, @"Debug break message");
   NDDAssert(true, @"Debug break message");
   NDDAssertionFailure(@"Debug break message");
+}
+
+- (void)test_FatalError {
+  NDFatalError(@"Fatal error message: '%@'.", @"");
 }
 
 @end

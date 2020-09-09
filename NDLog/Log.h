@@ -76,7 +76,7 @@ NDLogLevel NDLogGetDefinedLevel(void) NS_SWIFT_NAME(definedLogLevel());
 #define NDLogDebug(format, ...) NDLogTagDebug(nil, format, ##__VA_ARGS__)
 #define NDLogVerbose(format, ...) NDLogTagVerbose(nil, format, ##__VA_ARGS__)
 
-#define NDDefineAssertDescription(variable, condition, format, ...)   \
+#define _NDDefineAssertDescription(variable, condition, format, ...)  \
   NSString* variable =                                                \
       [NSString stringWithFormat:@"'%s' not satisfied.", #condition]; \
   if (format.length > 0) {                                            \
@@ -84,48 +84,56 @@ NDLogLevel NDLogGetDefinedLevel(void) NS_SWIFT_NAME(definedLogLevel());
         stringByAppendingFormat:format, ##__VA_ARGS__];               \
   };
 
-#define NDSystemAssert(systemAssert, condition, format, ...)    \
-  do {                                                          \
-    if (!(condition)) {                                         \
-      NDDefineAssertDescription(description, condition, format, \
-                                ##__VA_ARGS__);                 \
-      NDLogError(@"%@", description);                           \
-      systemAssert(NO, @"%@", description);                     \
-    }                                                           \
+#define _NDSystemAssert(systemAssert, condition, format, ...)    \
+  do {                                                           \
+    if (!(condition)) {                                          \
+      _NDDefineAssertDescription(description, condition, format, \
+                                 ##__VA_ARGS__);                 \
+      NDLogError(@"%@", description);                            \
+      systemAssert(NO, @"%@", description);                      \
+    }                                                            \
   } while (0)
 
 #define NDAssert(condition, format, ...) \
-  NDSystemAssert(NSAssert, condition, format, ##__VA_ARGS__)
+  _NDSystemAssert(NSAssert, condition, format, ##__VA_ARGS__)
 
 #define NDCAssert(condition, format, ...) \
-  NDSystemAssert(NSCAssert, condition, format, ##__VA_ARGS__)
+  _NDSystemAssert(NSCAssert, condition, format, ##__VA_ARGS__)
 
 #define NDAssertionFailure(format, ...) NDAssert(NO, format, ##__VA_ARGS__)
 
 #define NDCAssertionFailure(format, ...) NDCAssert(NO, format, ##__VA_ARGS__)
 
 #if DEBUG
-#define NDBreak(...) \
-  do {               \
-    raise(SIGTRAP);  \
+#define _NDBreak(...) \
+  do {                \
+    raise(SIGTRAP);   \
   } while (0)
 #else
-#define NDBreak(...) \
-  do {               \
+#define _NDBreak(...) \
+  do {                \
   } while (0)
 #endif
 
 #define NDDAssert(condition, format, ...) \
-  NDSystemAssert(NDBreak, condition, format, ##__VA_ARGS__)
+  _NDSystemAssert(_NDBreak, condition, format, ##__VA_ARGS__)
 
 #define NDDAssertionFailure(format, ...) NDDAssert(NO, format, ##__VA_ARGS__)
 
-FOUNDATION_EXPORT
-void NDLogMessage(NDLogSeverity severity,
-                  NSString* msg,
-                  const char* file,
-                  const char* function,
-                  NSUInteger line,
-                  id _Nullable tag) NS_REFINED_FOR_SWIFT;
+#define _NDAssertFatalError(condition, frm, ...)                     \
+  do {                                                               \
+    if (!(condition))                                                \
+      [NSException raise:@"NDFatalError" format:frm, ##__VA_ARGS__]; \
+  } while (0)
+
+#define NDFatalError(format, ...) \
+  _NDSystemAssert(_NDAssertFatalError, NO, format, ##__VA_ARGS__)
+
+FOUNDATION_EXPORT void NDLogMessage(NDLogSeverity severity,
+                                    NSString* msg,
+                                    const char* file,
+                                    const char* function,
+                                    NSUInteger line,
+                                    id _Nullable tag) NS_REFINED_FOR_SWIFT;
 
 NS_ASSUME_NONNULL_END
