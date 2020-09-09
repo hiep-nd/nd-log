@@ -104,4 +104,10 @@
                 @"para 0", @"para 1");
 }
 
+- (void)test_dassert {
+  NDDAssert(false, @"Debug break message");
+  NDDAssert(true, @"Debug break message");
+  NDDAssertionFailure(@"Debug break message");
+}
+
 @end

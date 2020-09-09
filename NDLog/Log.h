@@ -104,6 +104,22 @@ NDLogLevel NDLogGetDefinedLevel(void) NS_SWIFT_NAME(definedLogLevel());
 
 #define NDCAssertionFailure(format, ...) NDCAssert(NO, format, ##__VA_ARGS__)
 
+#if DEBUG
+#define NDBreak(...) \
+  do {               \
+    raise(SIGTRAP);  \
+  } while (0)
+#else
+#define NDBreak(...) \
+  do {               \
+  } while (0)
+#endif
+
+#define NDDAssert(condition, format, ...) \
+  NDSystemAssert(NDBreak, condition, format, ##__VA_ARGS__)
+
+#define NDDAssertionFailure(format, ...) NDDAssert(NO, format, ##__VA_ARGS__)
+
 FOUNDATION_EXPORT
 void NDLogMessage(NDLogSeverity severity,
                   NSString* msg,
