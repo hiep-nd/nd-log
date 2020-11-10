@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "NDLog"
-  s.version      = "0.0.6"
+  s.version      = "0.0.6.1"
   s.summary      = "A log system."
   s.description  = <<-DESC
   NDLog is a small and lightweight framework that help log.
@@ -19,8 +19,14 @@ Pod::Spec.new do |s|
     ss.framework = 'Foundation'
   end
 
+  s.subspec 'ObjC' do |ss|
+    ss.dependency 'NDLog/Core'
+  end
+
   s.subspec 'Swift' do |ss|
     ss.source_files = "Sources/Swift/*.{h,m,mm,swift}"
     ss.dependency 'NDLog/Core'
   end
+
+  s.default_subspec = 'Swift'
 end

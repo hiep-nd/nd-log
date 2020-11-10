@@ -1,9 +1,8 @@
 PODS:
-  - NDLog (0.0.6):
-    - NDLog/Core (= 0.0.6)
-    - NDLog/Swift (= 0.0.6)
-  - NDLog/Core (0.0.6)
-  - NDLog/Swift (0.0.6):
+  - NDLog (0.0.6.1):
+    - NDLog/Swift (= 0.0.6.1)
+  - NDLog/Core (0.0.6.1)
+  - NDLog/Swift (0.0.6.1):
     - NDLog/Core
 
 DEPENDENCIES:
@@ -14,8 +13,8 @@ EXTERNAL SOURCES:
     :path: "."
 
 SPEC CHECKSUMS:
-  NDLog: a96a5065f1771c2fcb5b2a0d1884d8c51f631db0
+  NDLog: 1e996efb979679f547dcf729a955fe92577ed2c5
 
-PODFILE CHECKSUM: 4c69c9a24efe8a8d275f4d75b035be46b6baaad0
+PODFILE CHECKSUM: 94064d82c7584e737661c1ee4f9592ce06f2bc69
 
 COCOAPODS: 1.9.3
