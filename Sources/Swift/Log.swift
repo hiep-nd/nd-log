@@ -184,17 +184,19 @@ public func nd_dassert(
   tag: Any? = nil
 ) {
   #if DEBUG
-    _nd_assert(
-      condition(),
-      message(),
-      function: function,
-      file: file,
-      line: line,
-      tag: tag,
-      failureHandlers: nd_log(error:function:file:line:tag:)
-    ) { _, _, _, _, _ in
+  // swiftlint:disable:next trailing_closure
+  _nd_assert(
+    condition(),
+    message(),
+    function: function,
+    file: file,
+    line: line,
+    tag: tag,
+    // swiftlint:disable:next multiline_arguments
+    failureHandlers: nd_log(error:function:file:line:tag:), { _, _, _, _, _ in
       raise(SIGTRAP)
     }
+  )
   #else
     _nd_assert(
       condition(),
