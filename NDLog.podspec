@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "NDLog"
-  s.version      = "0.0.6.2"
+  s.version      = "0.0.6.3"
   s.summary      = "A log system."
   s.description  = <<-DESC
   NDLog is a small and lightweight framework that help log.
@@ -14,20 +14,28 @@ Pod::Spec.new do |s|
   #s.source        = { :http => 'file:' + URI.escape(__dir__) + '/' }
   s.source       = { :git => "https://github.com/hiep-nd/nd-log.git", :tag => "Pod-#{s.version}" }
   
-  s.subspec 'Core' do |ss|
-    ss.source_files = "Sources/Core/*.{h,m,mm,swift}"
+  s.subspec 'Core_ObjC' do |ss|
+    ss.source_files = "Sources/Core_ObjC/*.{h,m,mm,swift}"
 
     ss.framework = 'Foundation'
   end
 
+  s.subspec 'Core_Swift' do |ss|
+    ss.source_files = "Sources/Core_Swift/*.{h,m,mm,swift}"
+
+    ss.dependency 'NDLog/Core_ObjC'
+  end
+
+  s.subspec 'Core' do |ss|
+    ss.dependency 'NDLog/Core_Swift'
+  end
+
   s.subspec 'ObjC' do |ss|
-    ss.dependency 'NDLog/Core'
+    ss.dependency 'NDLog/Core_ObjC'
   end
 
   s.subspec 'Swift' do |ss|
-    ss.source_files = "Sources/Swift/*.{h,m,mm,swift}"
-
-    ss.dependency 'NDLog/Core'
+    ss.dependency 'NDLog/Core_Swift'
   end
 
   s.default_subspec = 'Swift'

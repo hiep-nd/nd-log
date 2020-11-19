@@ -1,9 +1,11 @@
 PODS:
-  - NDLog (0.0.6.1):
-    - NDLog/Swift (= 0.0.6.1)
-  - NDLog/Core (0.0.6.1)
-  - NDLog/Swift (0.0.6.1):
-    - NDLog/Core
+  - NDLog (0.0.6.2):
+    - NDLog/Swift (= 0.0.6.2)
+  - NDLog/Core_ObjC (0.0.6.2)
+  - NDLog/Core_Swift (0.0.6.2):
+    - NDLog/Core_ObjC
+  - NDLog/Swift (0.0.6.2):
+    - NDLog/Core_Swift
 
 DEPENDENCIES:
   - NDLog (from `.`)
@@ -13,7 +15,7 @@ EXTERNAL SOURCES:
     :path: "."
 
 SPEC CHECKSUMS:
-  NDLog: 1e996efb979679f547dcf729a955fe92577ed2c5
+  NDLog: 585b26463216913f91733629529d65918ea5262d
 
 PODFILE CHECKSUM: 94064d82c7584e737661c1ee4f9592ce06f2bc69
 
