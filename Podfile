@@ -9,6 +9,7 @@ target 'Samples' do
 
   # Pods for Samples
   pod 'NDLog', :path => '.'
+  pod 'JustLog'
 
   target 'SamplesTests' do
     # Pods for testing

@@ -1,22 +1,37 @@
 PODS:
-  - NDLog (0.0.6.2):
-    - NDLog/Swift (= 0.0.6.2)
-  - NDLog/Core_ObjC (0.0.6.2)
-  - NDLog/Core_Swift (0.0.6.2):
+  - CocoaAsyncSocket (7.6.4)
+  - JustLog (2.6.0):
+    - CocoaAsyncSocket (~> 7.6.3)
+    - SwiftyBeaver (~> 1.7.0)
+  - NDLog (0.0.6.3):
+    - NDLog/Swift (= 0.0.6.3)
+  - NDLog/Core_ObjC (0.0.6.3)
+  - NDLog/Core_Swift (0.0.6.3):
     - NDLog/Core_ObjC
-  - NDLog/Swift (0.0.6.2):
+  - NDLog/Swift (0.0.6.3):
     - NDLog/Core_Swift
+  - SwiftyBeaver (1.7.1)
 
 DEPENDENCIES:
+  - JustLog
   - NDLog (from `.`)
+
+SPEC REPOS:
+  trunk:
+    - CocoaAsyncSocket
+    - JustLog
+    - SwiftyBeaver
 
 EXTERNAL SOURCES:
   NDLog:
     :path: "."
 
 SPEC CHECKSUMS:
-  NDLog: 585b26463216913f91733629529d65918ea5262d
+  CocoaAsyncSocket: 694058e7c0ed05a9e217d1b3c7ded962f4180845
+  JustLog: 192079e8550c1a241ece39c6ce30fc90cd664999
+  NDLog: 783141ece6ac6a398262145b59cc7c27b80ab58d
+  SwiftyBeaver: da5e573ad583586c18236324c36900990afe1733
 
-PODFILE CHECKSUM: 94064d82c7584e737661c1ee4f9592ce06f2bc69
+PODFILE CHECKSUM: 5fb43e2d593c3390970d6be5768dd29d780c207a
 
 COCOAPODS: 1.9.3
